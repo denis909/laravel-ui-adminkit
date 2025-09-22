@@ -3,71 +3,40 @@
 @section('content')
 
     <div class="text-center mt-4">
-        <h1 class="h2">Get started</h1>
+        <h1 class="h2">{{ __('Get started') }}</h1>
         <p class="lead">
-            Start creating the best possible user experience for you customers.
+            {{ __('Start creating the best possible user experience for you customers.') }}
         </p>
     </div>
 
     <div class="card">
+        {{--
         <div class="card-header">{{ __('Register') }}</div>
-
+        --}}
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
-                <div class="row mb-3">
-                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                <x-form-input-group :label="__('Name')" :error="$errors->first('name')">
+                    <x-input-text name="name" value="{{ old('name') }}" autocomplete="name" autofocus />
+                </x-form-input-group>
 
-                    <div class="col-md-6">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <x-form-input-group :label="__('Email Address')" :error="$errors->first('email')">
+                    <x-input-text type="email" name="email" value="{{ old('email') }}" autocomplete="email" />
+                </x-form-input-group>
 
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
+                <x-form-input-group :label="__('Password')" :error="$errors->first('password')">
+                    <x-input-text type="password" name="password" autocomplete="new-password" />
+                </x-form-input-group>
 
-                <div class="row mb-3">
-                    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                <x-form-input-group :label="__('Confirm Password')" :error="$errors->first('password_confirmation')">
+                    <x-input-text type="password" name="password_confirmation" autocomplete="new-password" />
+                </x-form-input-group>
 
-                    <div class="col-md-6">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                    </div>
-                </div>
+                <x-errors />
 
                 <div class="row mb-0">
-                    <div class="col-md-6 offset-md-4">
+                    <div class="col-md-6">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Register') }}
                         </button>
@@ -80,6 +49,5 @@
     <div class="text-center mb-3">
         {{ __('Already have account?') }} <a href="{{ route('login') }}">{{ __('Log In') }}</a>
     </div>
-
 
 @endsection

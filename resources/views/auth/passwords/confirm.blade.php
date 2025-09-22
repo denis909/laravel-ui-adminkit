@@ -1,10 +1,12 @@
-@extends('layouts.auth')
+@extends('layouts.auth', ['title' => __('Confirm Password') ])
 
 @section('content')
 
     <div class="card">
+        {{--
         <div class="card-header">{{ __('Confirm Password') }}</div>
-
+        --}}
+        
         <div class="card-body">
             {{ __('Please confirm your password before continuing.') }}
 
@@ -25,8 +27,10 @@
                     </div>
                 </div>
 
+                <x-errors />
+
                 <div class="row mb-0">
-                    <div class="col-md-8 offset-md-4">
+                    <div class="col-md-8">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Confirm Password') }}
                         </button>

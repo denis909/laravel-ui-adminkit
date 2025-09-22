@@ -19,6 +19,7 @@
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
     <link href="{{ asset('assets/adminkit-3.4.0/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/adminkit-custom.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -304,15 +305,26 @@
 
                     <h1 class="h3 mb-3">Blank Page</h1>
 
+                    @include('layouts.parts.messages')
+
                     <div class="row">
                         <div class="col-12">
+
+
+                            @yield('content')
+
+                            {{--
+
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title mb-0">Empty card</h5>
                                 </div>
                                 <div class="card-body">
+                                    
                                 </div>
                             </div>
+
+                            --}}
                         </div>
                     </div>
 
@@ -350,7 +362,7 @@
     </div>
 
     <script src="{{ asset('assets/adminkit-3.4.0/js/app.js') }}"></script>
-
+    <script src="{{ asset('js/adminkit-custom.js') }}"></script>
 </body>
 
 </html>

@@ -20,6 +20,7 @@
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
     <link href="{{ asset('assets/adminkit-3.4.0/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/adminkit-custom.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -29,6 +30,8 @@
             <div class="row vh-100">
                 <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
                     <div class="d-table-cell align-middle">
+
+                        @include('layouts.parts.messages')
 
                         @yield('content')
 
@@ -78,6 +81,7 @@
     </main>
 
     <script src="{{ asset('assets/adminkit-3.4.0/js/app.js') }}"></script>
+    <script src="{{ asset('js/adminkit-custom.js') }}"></script>
 
 </body>
 

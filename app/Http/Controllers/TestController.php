@@ -15,9 +15,9 @@ class TestController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function sendEmail()
+    public function sendEmail(Request $request)
     {
-        $user = User::where('email', 'denis909@mail.ru')->first();
+        $user = User::where('email', $request->email)->first();
 
         Assert::notEmpty($user, 'User not found.');
 

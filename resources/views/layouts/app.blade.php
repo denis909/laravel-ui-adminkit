@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {{--
     <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
@@ -12,25 +12,30 @@
     --}}
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+    <link rel="shortcut icon" href="{{ asset('assets/adminkit/img/icons/icon-48x48.png') }}" />
 
+    {{--
     <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
+    --}}
 
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
-    <link href="{{ asset('assets/adminkit-3.4.0/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/adminkit/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminkit-custom.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="wrapper">
-        <nav id="sidebar" class="sidebar js-sidebar">
+        <nav id="sidebar" class="{{ $sidebarCollapsed 
+            ? 'sidebar js-sidebar collapsed' 
+            : 'sidebar js-sidebar' }}">
             <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand" href="index.html">
-          <span class="align-middle">AdminKit</span>
+                <a class="sidebar-brand" href="{{ url('/') }}">
+          <span class="align-middle">{{ config('app.name', 'Laravel') }}</span>
         </a>
 
+        {{--
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">
                         Pages
@@ -117,6 +122,10 @@
                     </li>
                 </ul>
 
+                --}}
+
+                {{--
+
                 <div class="sidebar-cta">
                     <div class="sidebar-cta-content">
                         <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
@@ -128,6 +137,7 @@
                         </div>
                     </div>
                 </div>
+                --}}
             </div>
         </nav>
 
@@ -139,6 +149,7 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav navbar-align">
+                        {{--
                         <li class="nav-item dropdown">
                             <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
                                 <div class="position-relative">
@@ -271,6 +282,7 @@
                                 </div>
                             </div>
                         </li>
+                        --}}
                         <li class="nav-item dropdown">
                             <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                 <i class="align-middle" data-feather="settings"></i>
@@ -280,19 +292,20 @@
                 
                 {{--<img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> 
                 --}}
-                <span class="text-dark">Charles Hall</span>
+                <span class="text-dark">{{ Auth::user()?->email }}</span>
               </a>
                             <div class="dropdown-menu dropdown-menu-end">
+                                {{--
                                 <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
                                 <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
                                 <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
                                 <div class="dropdown-divider"></div>
-
+                                --}}
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button class="dropdown-item" type="submit">Log out</button>
+                                    <button class="dropdown-item" type="submit">{{ __('Log out') }}</button>
                                 </form>
                             </div>
                         </li>
@@ -303,7 +316,9 @@
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">Blank Page</h1>
+                    @if(!empty($title))
+                        <h1 class="h3 mb-3">{{ $title }}</h1>
+                    @endif
 
                     @include('layouts.parts.messages')
 
@@ -336,9 +351,13 @@
                     <div class="row text-muted">
                         <div class="col-6 text-start">
                             <p class="mb-0">
-                                <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>                               &copy;
+                                <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a>
+                                {{--
+                                 - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>                               &copy;
+                                --}}
                             </p>
                         </div>
+                        {{--
                         <div class="col-6 text-end">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
@@ -355,13 +374,14 @@
                                 </li>
                             </ul>
                         </div>
+                        --}}
                     </div>
                 </div>
             </footer>
         </div>
     </div>
-
-    <script src="{{ asset('assets/adminkit-3.4.0/js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/adminkit/js/app.js') }}"></script>
     <script src="{{ asset('js/adminkit-custom.js') }}"></script>
 </body>
 

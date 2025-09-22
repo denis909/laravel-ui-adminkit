@@ -1,5 +1,5 @@
 @props([
-    'name',
+    'name' => null,
     'type' => 'text'
 ])
 
@@ -12,4 +12,4 @@ if ($errors->has($name))
 }
 @endphp
 
-<input name="{{ $name }}" {{ $attributes->merge(['class' => 'form-control']) }} />  
+<input type="{{ $type }}" name="{{ $name }}" {{ $attributes->merge(['class' => 'form-control']) }} />  

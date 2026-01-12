@@ -20,8 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $collapsed = request()->cookie('sidebar-collapsed', 0);
-
-        View::share('sidebarCollapsed', $collapsed);
+        View::share('sidebarCollapsed', request()->cookie('sidebar-collapsed', 0));
     }
 }

@@ -32,7 +32,7 @@
                 <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
                     <div class="d-table-cell align-middle">
 
-                        @include('layouts.parts.messages')
+                        <x-messages />
 
                         @yield('content')
 

@@ -320,7 +320,7 @@
                         <h1 class="h3 mb-3">{{ $title }}</h1>
                     @endif
 
-                    @include('layouts.parts.messages')
+                    <x-messages />
 
                     <div class="row">
                         <div class="col-12">

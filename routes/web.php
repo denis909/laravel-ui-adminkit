@@ -8,9 +8,13 @@ Route::get('/', function () {
 });
 */
 
-Auth::routes();
+Auth::routes([
+    'verify' => true,
+]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'verified'])->group(function() {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 
 Route::namespace('App\Http\Controllers')->group(function() {
     Route::prefix('test')->controller('TestController')->group(function() {

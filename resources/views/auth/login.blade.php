@@ -48,7 +48,9 @@
             </form>
         </div>
     </div>
-    <div class="text-center mb-3">
-        {{ __('Don\'t have an account?') }} <a href="{{ route('register') }}">{{ __('Sign up') }}</a>
-    </div>
+    @if (Route::has('register'))
+        <div class="text-center mb-3">
+            {{ __('Don\'t have an account?') }} <a href="{{ route('register') }}">{{ __('Sign up') }}</a>
+        </div>
+    @endif
 @endsection

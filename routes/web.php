@@ -9,6 +9,11 @@ Route::get('/', function () {
 */
 
 Auth::routes([
+    'login' => true,
+    'logout' => true,
+    'register' => false,
+    'reset' => false,
+    'confirm' => true,
     'verify' => true,
 ]);
 

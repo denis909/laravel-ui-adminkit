@@ -16,22 +16,21 @@
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
+                <x-admin::form-group :label="__('Name')" :error="$errors->first('name')">
+                    <x-admin::input name="name" value="{{ old('name') }}" autocomplete="name" autofocus />
+                </x-admin::form-group>
 
-                <x-form-input-group :label="__('Name')" :error="$errors->first('name')">
-                    <x-input-text name="name" value="{{ old('name') }}" autocomplete="name" autofocus />
-                </x-form-input-group>
+                <x-admin::form-group :label="__('Email Address')" :error="$errors->first('email')">
+                    <x-admin::input type="email" name="email" value="{{ old('email') }}" autocomplete="email" />
+                </x-admin::form-group>
 
-                <x-form-input-group :label="__('Email Address')" :error="$errors->first('email')">
-                    <x-input-text type="email" name="email" value="{{ old('email') }}" autocomplete="email" />
-                </x-form-input-group>
+                <x-admin::form-group :label="__('Password')" :error="$errors->first('password')">
+                    <x-admin::input type="password" name="password" autocomplete="new-password" />
+                </x-admin::form-group>
 
-                <x-form-input-group :label="__('Password')" :error="$errors->first('password')">
-                    <x-input-text type="password" name="password" autocomplete="new-password" />
-                </x-form-input-group>
-
-                <x-form-input-group :label="__('Confirm Password')" :error="$errors->first('password_confirmation')">
-                    <x-input-text type="password" name="password_confirmation" autocomplete="new-password" />
-                </x-form-input-group>
+                <x-admin::form-group :label="__('Confirm Password')" :error="$errors->first('password_confirmation')">
+                    <x-admin::input type="password" name="password_confirmation" autocomplete="new-password" />
+                </x-admin::form-group>
 
                 <x-errors />
 

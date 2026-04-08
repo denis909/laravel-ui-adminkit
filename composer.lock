@@ -141,12 +141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/denis909/laravel-theme-bootstrap5.git",
-                "reference": "ccacf5da0a242bd3ef3021891968f1670ef6fefd"
+                "reference": "b3d875ea0fb08bfbf76ffeb8ab3cd5cb5ea47351"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/denis909/laravel-theme-bootstrap5/zipball/ccacf5da0a242bd3ef3021891968f1670ef6fefd",
-                "reference": "ccacf5da0a242bd3ef3021891968f1670ef6fefd",
+                "url": "https://api.github.com/repos/denis909/laravel-theme-bootstrap5/zipball/b3d875ea0fb08bfbf76ffeb8ab3cd5cb5ea47351",
+                "reference": "b3d875ea0fb08bfbf76ffeb8ab3cd5cb5ea47351",
                 "shasum": ""
             },
             "default-branch": true,
@@ -159,7 +159,7 @@
                 "issues": "https://github.com/denis909/laravel-theme-bootstrap5/issues",
                 "source": "https://github.com/denis909/laravel-theme-bootstrap5/tree/main"
             },
-            "time": "2026-04-08T09:07:29+00:00"
+            "time": "2026-04-08T14:02:55+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

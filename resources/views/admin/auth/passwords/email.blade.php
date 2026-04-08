@@ -11,11 +11,11 @@
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
 
-                <x-form-input-group :label="__('Email Address')" :error="$errors->first('email')">
-                    <x-input-text type="email" name="email" value="{{ old('email') }}" autocomplete="email" />
-                </x-form-input-group>
+                <x-admin::form-group :label="__('Email Address')" :error="$errors->first('email')">
+                    <x-admin::input type="email" name="email" value="{{ old('email') }}" autocomplete="email" />
+                </x-admin::form-group>
 
-                <x-errors />
+                <x-admin::errors />
 
                 <div class="row mb-0">
                     <div class="col-md-6">

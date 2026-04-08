@@ -17,18 +17,18 @@
             <form method="POST" action="{{ route('admin.login') }}">
                 @csrf
 
-                <x-admin::input-group :label="__('Email Address')" :error="$errors->first('email')">
+                <x-admin::form-group :label="__('Email Address')" :error="$errors->first('email')">
                     <x-admin::input type="email" name="email" value="{{ old('email') }}" autocomplete="email" />
-                </x-admin::input-group>
+                </x-admin::form-group>
 
-                <x-admin::input-group :label="__('Password')" :error="$errors->first('password')">
+                <x-admin::form-group :label="__('Password')" :error="$errors->first('password')">
                     <x-admin::input type="password" name="password" autocomplete="new-password" />
-                </x-admin::input-group>
+                </x-admin::form-group>
 
-                <x-admin::input-group :labelOptions="['for' => 'remember-checkbox']" :label="__('Remember Me')" :error="$errors->first('remember')">
+                <x-admin::form-group :labelOptions="['for' => 'remember-checkbox']" :label="__('Remember Me')" :error="$errors->first('remember')">
                     <input type="hidden" name="remember" value="" />
                     <x-admin::checkbox id="remember-checkbox" name="remember" value="{{ old('remember', 1) }}" />
-                </x-admin::input-group>
+                </x-admin::form-group>
 
                 <x-admin::errors />
 

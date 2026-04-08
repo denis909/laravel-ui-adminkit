@@ -23,9 +23,3 @@ Route::prefix('admin')
             require(__DIR__ . '/admin.php');
         });
     });
-
-Route::namespace('App\Http\Controllers')->group(function() {
-    Route::prefix('test')->controller('TestController')->group(function() {
-        Route::get('send-email', 'sendEmail');
-    });
-});

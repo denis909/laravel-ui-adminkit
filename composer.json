@@ -11,6 +11,7 @@
 
     "require": {
         "php": "^8.3",
+        "denis909/laravel-theme-bootstrap5": "dev-main",
         "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0",
         "laravel/ui": "^4.6"

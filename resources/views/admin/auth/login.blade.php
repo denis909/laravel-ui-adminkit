@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('admin.layouts.auth')
 
 @section('content')
 
@@ -14,23 +14,23 @@
         <div class="card-header">{{ __('Login') }}</div>
         --}}
         <div class="card-body">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('admin.login') }}">
                 @csrf
 
-                <x-form-input-group :label="__('Email Address')" :error="$errors->first('email')">
-                    <x-input-text type="email" name="email" value="{{ old('email') }}" autocomplete="email" />
-                </x-form-input-group>
+                <x-admin::input-group :label="__('Email Address')" :error="$errors->first('email')">
+                    <x-admin::input type="email" name="email" value="{{ old('email') }}" autocomplete="email" />
+                </x-admin::input-group>
 
-                <x-form-input-group :label="__('Password')" :error="$errors->first('password')">
-                    <x-input-text type="password" name="password" autocomplete="new-password" />
-                </x-form-input-group>
+                <x-admin::input-group :label="__('Password')" :error="$errors->first('password')">
+                    <x-admin::input type="password" name="password" autocomplete="new-password" />
+                </x-admin::input-group>
 
-                <x-form-input-group :labelOptions="['for' => 'remember']" :label="__('Remember Me')" :error="$errors->first('remember')">
+                <x-admin::input-group :labelOptions="['for' => 'remember-checkbox']" :label="__('Remember Me')" :error="$errors->first('remember')">
                     <input type="hidden" name="remember" value="" />
-                    <x-input-checkbox id="remember" name="remember" value="{{ old('remember', 1) }}" />
-                </x-form-input-group>
+                    <x-admin::checkbox id="remember-checkbox" name="remember" value="{{ old('remember', 1) }}" />
+                </x-admin::input-group>
 
-                <x-errors />
+                <x-admin::errors />
 
                 <div class="row mb-0">
                     <div class="col-md-8">

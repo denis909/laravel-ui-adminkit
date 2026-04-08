@@ -23,15 +23,16 @@
     <link href="{{ asset('assets/adminkit/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminkit-custom.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    @stack('styles')
 </head>
 
 <body>
     <div class="wrapper">
-        <nav id="sidebar" class="{{ $sidebarCollapsed 
+        <nav id="sidebar" class="{{ $adminSidebarCollapsed 
             ? 'sidebar js-sidebar collapsed' 
             : 'sidebar js-sidebar' }}">
             <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand" href="{{ url('/') }}">
+                <a class="sidebar-brand" href="{{ route('admin.home') }}">
           <span class="align-middle">{{ config('app.name', 'Laravel') }}</span>
         </a>
 
@@ -303,7 +304,7 @@
                                 <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
                                 <div class="dropdown-divider"></div>
                                 --}}
-                                <form action="{{ route('logout') }}" method="POST">
+                                <form action="{{ route('admin.logout') }}" method="POST">
                                     @csrf
                                     <button class="dropdown-item" type="submit">{{ __('Log out') }}</button>
                                 </form>
@@ -315,34 +316,15 @@
 
             <main class="content">
                 <div class="container-fluid p-0">
-
                     @if(!empty($title))
                         <h1 class="h3 mb-3">{{ $title }}</h1>
                     @endif
-
-                    <x-messages />
-
+                    <x-admin::messages />
                     <div class="row">
                         <div class="col-12">
-
-
                             @yield('content')
-
-                            {{--
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">Empty card</h5>
-                                </div>
-                                <div class="card-body">
-                                    
-                                </div>
-                            </div>
-
-                            --}}
                         </div>
                     </div>
-
                 </div>
             </main>
 
@@ -383,6 +365,15 @@
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/adminkit/js/app.js') }}"></script>
     <script src="{{ asset('js/adminkit-custom.js') }}"></script>
+    <script type="text/javascript">     
+        $(document).on("click", ".sidebar-toggle", function() {
+            if ($("#sidebar").hasClass("collapsed")) {        
+                document.cookie = "admin-sidebar-collapsed=1; path=/";
+            } else {
+                document.cookie = "admin-sidebar-collapsed=0; path=/";
+            }
+        });
+    </script>
+    @stack('scripts')
 </body>
-
 </html>

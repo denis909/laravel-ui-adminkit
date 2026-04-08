@@ -1,4 +1,4 @@
-@extends('layouts.app-card', ['title' => __('Dashboard')])
+@extends('admin.layouts.app-card', ['title' => __('Dashboard')])
 
 @section('card-body')
 

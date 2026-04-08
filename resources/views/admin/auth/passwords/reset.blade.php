@@ -1,4 +1,4 @@
-@extends('layouts.auth', ['title' => __('Reset Password')])
+@extends('admin.layouts.auth', ['title' => __('Reset Password')])
 
 @section('content')
     <div class="card">

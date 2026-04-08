@@ -1,4 +1,4 @@
-@extends('layouts.auth', ['title' => __('Confirm Password') ])
+@extends('admin.layouts.auth', ['title' => __('Confirm Password') ])
 
 @section('content')
 

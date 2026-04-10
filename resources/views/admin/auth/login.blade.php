@@ -25,9 +25,9 @@
                     <x-admin::input type="password" name="password" autocomplete="new-password" />
                 </x-admin::form-group>
 
-                <x-admin::form-group :labelOptions="['for' => 'remember-checkbox']" :label="__('Remember Me')" :error="$errors->first('remember')">
+                <x-admin::form-group :labelAttributes="['for' => 'remember-checkbox']" :label="__('Remember Me')" :error="$errors->first('remember')">
                     <input type="hidden" name="remember" value="" />
-                    <x-admin::checkbox id="remember-checkbox" name="remember" value="{{ old('remember', 1) }}" />
+                    <x-admin::checkbox id="remember-checkbox" name="remember" value="1" :checked="old('remember', 1) == 1" />
                 </x-admin::form-group>
 
                 <x-admin::errors />
